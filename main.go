@@ -25,8 +25,8 @@ func writeJSONToFile(fileName string, data []byte) error {
 }
 
 func main() {
-	domains := []string{"ru.cppreference.com"}
-	url := "https://ru.cppreference.com/w/cpp"
+	domains := []string{"en.cppreference.com"}
+	url := "https://en.cppreference.com/w/cpp"
 	cacheDir := "./cpp-reference-cache"
 	config := config.New(domains, url, cacheDir)
 

@@ -17,7 +17,11 @@ func (s *Scraper) extractPageData(e *colly.HTMLElement) {
 		Signature:   joinLines(e, SignatureSelector),
 		Example:     e.ChildText(ExampleSelector),
 	}
-	s.pages = append(s.pages, page)
+	// All useless pages (and, unfortunately, some language constructions) don't
+	// have signatures
+	if page.Signature != "" {
+		s.pages = append(s.pages, page)
+	}
 }
 
 func (s *Scraper) visitInternalLinks(e *colly.HTMLElement) {
